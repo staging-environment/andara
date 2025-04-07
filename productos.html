@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos - ANDARA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .section-title {
+      margin-top: 60px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .product-card img {
+      height: 400px;
+      object-fit: cover;
+      object-position: top;
+      opacity: 0.9;
+    }
+    .feature-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .feature-box svg {
+      min-width: 32px;
+      min-height: 32px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index">ANDARA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="precios">Precios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="productos">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacto">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero mt-5 pt-5">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Nuestros productos</h1>
+      <p class="lead">Conoce las soluciones digitales que te ofrece ANDARA</p>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section class="container py-5">
+    <h2 class="section-title">SimplyTech</h2>
+    <p class="text-center mb-4">La herramienta ideal para gestionar citas, pagos, clientes y servicios en centros de estética, peluquerías y barberías.</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card product-card h-100 shadow-sm">
+          <img src="movil1.jpg" class="card-img-top" alt="SimplyTech">
+          <div class="card-body">
+            <h5 class="card-title">SimplyTech</h5>
+            <p class="card-text">Una solución integral para digitalizar tu negocio. Gestiona todo desde un solo lugar: citas, cobros, clientes, empleados y presencia online.</p>
+            <a href="precios" class="btn btn-primary">Ver planes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h3 class="text-center mb-4">Principales funcionalidades</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="feature-box">
+            <svg class="feather feather-home" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9.5V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9.5"></path><path d="M9 22V12h6v10"></path><path d="M3 10.5L12 3l9 7.5"></path></svg>
+            <div><strong>Inicio:</strong> Vista general con estadísticas e indicadores clave del negocio.</div>
+          </div>
+          <div class="feature-box">
+            <svg class="feather feather-clock" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <div><strong>Citas:</strong> Registro de citas con recordatorios y control de disponibilidad.</div>
+          </div>
+          <div class="feature-box">
+            <svg class="feather feather-calendar" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <div><strong>Calendario:</strong> Organización visual de las citas por día, semana o mes.</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="feature-box">
+            <svg class="feather feather-users" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <div><strong>Clientes:</strong> Fichas de clientes, historial, notas y contacto directo.</div>
+          </div>
+          <div class="feature-box">
+            <svg class="feather feather-briefcase" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 3h-8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"></path></svg>
+            <div><strong>Servicios:</strong> Crea y categoriza los servicios ofrecidos.</div>
+          </div>
+          <div class="feature-box">
+            <svg class="feather feather-credit-card" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <div><strong>Cobros:</strong> Registra pagos, gestiona métodos de cobro y revisa historial.</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-muted py-4">
+    &copy; 2025 ANDARA - Todos los derechos reservados
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
