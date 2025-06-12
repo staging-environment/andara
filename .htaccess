@@ -1,5 +1,0 @@
-RewriteEngine On
-
-# Si existe el archivo .html, servirlo al acceder sin la extensión
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
