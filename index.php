@@ -14,6 +14,18 @@ switch ($request) {
     case 'contacto':
         include 'contacto.html';
         break;
+    case 'quienes-somos':
+        include 'team.html';
+        break;
+    case 'productos':
+        include 'listado.html';
+        break;
+    case 'precios':
+        include 'salon.html';
+        break;
+    case 'porque-andara':
+        include 'benefit.html';
+        break;
     default:
         include 'index.html';
         break;
