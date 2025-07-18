@@ -1,5 +1,7 @@
 <?php
 
+$base_url = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') . '/';
+
 // Obtenemos la ruta solicitada por el usuario
 $request = $_SERVER['REQUEST_URI'];
 
@@ -7,15 +9,13 @@ $request = $_SERVER['REQUEST_URI'];
 $request = trim($request, '/');
 
 // En función de la ruta, decidimos qué contenido cargar
+
 switch ($request) {
-    case 'home':
-        echo "Estás en la página de inicio.";
-        break;
     case 'contacto':
-        echo "Esta es la página de contacto.";
+        include 'contacto.html';
         break;
     default:
-        echo "Página no encontrada.";
+        include 'index.html';
         break;
 }
 
