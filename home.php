@@ -32,7 +32,7 @@
                 <p>
                   Comienza una demo gratuita y descubre lo fácil que es digitalizar tu peluquería.
                 </p>
-                  <a href="precios.html" class buttonY>Quiero una demo</a>
+                  <a href="precios.php" class buttonY>Quiero una demo</a>
               </div>
               <img src="images/slide1.png" class="fondo-slide" alt="...">
               <h3>NUESTROS SOFTWARE</h3>
