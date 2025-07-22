@@ -8,6 +8,9 @@ $request = $_SERVER['REQUEST_URI'];
 // Limpiamos la ruta de posibles parámetros
 $request = trim($request, '/');
 
+// Incluimos variables de configuracion
+include 'includes/variables_configuracion.php';
+
 // En función de la ruta, decidimos qué contenido cargar
 
 switch ($request) {
