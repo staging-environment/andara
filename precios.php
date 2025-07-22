@@ -33,18 +33,6 @@
             <div class="carousel-item active">
               <div class="text-inner-slide">
                 <h2>
-                  Empieza a <span>transformar</span> tu negocio hoy
-                </h2>
-                <p>
-                  Comienza una demo gratuita y descubre lo fácil que es digitalizar tu peluquería.
-                </p>
-              </div>
-              <img src="images/slide1.png" class="fondo-slide" alt="...">
-              <h3>NUESTROS SOFTWARE</h3>
-            </div>
-            <div class="carousel-item">
-              <div class="text-inner-slide">
-                <h2>
                   <span> PARA</span>
                   PELUQUERÍAS,
                   <span> BARBERÍAS</span> Y
@@ -55,18 +43,7 @@
               </div>
               <img src="images/slide2.png" class="fondo-slide" alt="...">
             </div>
-            <div class="carousel-item">
-              <div class="text-inner-slide">
-                <h2>
-                  Empieza a <span>transformar</span> tu negocio hoy
-                </h2>
-                <p>
-                  Comienza una demo gratuita y descubre lo fácil que es digitalizar tu peluquería.
-                </p>
-                <button>Quiero una demo</button>
-              </div>
-              <img src="images/slide3.png" class="fondo-slide" alt="...">
-            </div>
+
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

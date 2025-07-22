@@ -97,9 +97,9 @@
                 <div class="form">
                   <div class="left">
                 <h4> Información de contacto</h4> 
- <p><i class="fa fa-location"></i> Av. de Juan de Avellaneda, 83 pral. izq. <br/>57215 Zaragoza (España)</p>
- <p><i class="fa fa-phone"></i>+ 34 665551143</p>
-<p> <i class="fa fa-envelope"></i><a href="mailto:info@andara.com" class="text-red">info@andara.com</a>
+ <p><i class="fa fa-location"></i> Calle Estrella Canopus, 1 <br/>41015 Sevilla (España)</p>
+ <p><i class="fa fa-phone"></i>+ 34 640686306</p>
+<p> <i class="fa fa-envelope"></i><a href="mailto:andaratechnology@gmail.com" class="text-red">info@andara.com</a>
 </p>
                   </div>
                   <div class="right">

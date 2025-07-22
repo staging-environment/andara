@@ -37,31 +37,7 @@
               <img src="images/slide1.png" class="fondo-slide" alt="...">
               <h3>NUESTROS SOFTWARE</h3>
             </div>
-            <div class="carousel-item">
-              <div class="text-inner-slide">
-                <h2>
-                  Empieza a <span>transformar</span> tu negocio hoy
-                </h2>
-                <p>
-                  Comienza una demo gratuita y descubre lo fácil que es digitalizar tu peluquería.
-                </p>
-                <button class="buttonY">Quiero una demo</button>
-              </div>
-              <img src="images/slide2.png" class="fondo-slide" alt="...">
-            </div>
-            <div class="carousel-item">
-              <div class="text-inner-slide">
-                <h2>
-                  Empieza a <span>transformar</span> tu negocio hoy
-                </h2>
-                <p>
-                  Comienza una demo gratuita y descubre lo fácil que es digitalizar tu peluquería.
-                </p>
-                <button class="buttonY">Quiero una demo</button>
-              </div>
-              <img src="images/slide3.png" class="fondo-slide" alt="...">
-            </div>
-          </div>
+           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -94,14 +70,10 @@
                     
         </div>
          <div class="group-right">  
-          <h3 class="text-red">Estética</h3>
-       <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet eget lectus eu congue. Nam finibus urna eget nisl aliquam, 
-        in dictum ligula feugiat. Donec mollis ligula purus, et interdum velit bibendum eget. Aliquam magna diam, tristique eu libero nec, 
-        sagittis finibus sapien. Cras a ex ultricies, faucibus elit sagittis, maximus nisi. Donec quis arcu sapien. Aenean risus nibh, varius sed porttitor a, 
-        ornare nec leo. Sed vitae lacus in ipsum varius sagittis. Ut in quam cursus, ullamcorper sapien posuere, laoreet elit. Suspendisse interdum, 
-        risus ut ultricies scelerisque, nibh est commodo leo, sed tristique nisl odio et turpis. Fusce pellentesque nunc nec arcu feugiat accumsan. 
-        Praesent mauris sem, eleifend sit amet tortor in, cursus vehicula arcu. Curabitur convallis sit amet nunc ac feugiat. 
-        Sed at risus id diam porta pretium id vel felis. Donec nec dui id nisl hendrerit laoreet eu id odio.</p>
+          <h3 class="text-red">Descubre la revolución digital en la gestión de peluquerías y centros de estética</h3>
+       <p> Con nuestra plataforma, tendrás el control total de tu negocio: gestiona cobros, clientes, reservas y la caja diaria con unos cuantos clics. Ofrece a tus clientes una experiencia moderna y sencilla para reservar sus citas a través de una página web atractiva y fácil de usar.
+
+           Con nuestra herramienta, optimizas tus procesos y ahorras tiempo, permitiéndote enfocarte en lo que realmente importa: la belleza y el bienestar de tus clientes. ¡Es hora de llevar tu negocio al siguiente nivel con una solución que entiende tus necesidades!</p>
        <button class="buttonY">Ver más</button>         
       </div>
       </div>
@@ -112,7 +84,7 @@
     <input type="radio" name="tabs" id="tab2">
     
         <div class="tab-label-content" id="tab2-content">
-      <label for="tab2">Resturant</label>
+      <label for="tab2">Resturantes</label>
     
       <div class="tab-content">
           <div class="group-left">          
@@ -120,14 +92,8 @@
                   
         </div>
          <div class="group-right">  
-          <h3 class="text-red">Resturant</h3>
-       <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet eget lectus eu congue. Nam finibus urna eget nisl aliquam, 
-        in dictum ligula feugiat. Donec mollis ligula purus, et interdum velit bibendum eget. Aliquam magna diam, tristique eu libero nec, 
-        sagittis finibus sapien. Cras a ex ultricies, faucibus elit sagittis, maximus nisi. Donec quis arcu sapien. Aenean risus nibh, varius sed porttitor a, 
-        ornare nec leo. Sed vitae lacus in ipsum varius sagittis. Ut in quam cursus, ullamcorper sapien posuere, laoreet elit. Suspendisse interdum, 
-        risus ut ultricies scelerisque, nibh est commodo leo, sed tristique nisl odio et turpis. Fusce pellentesque nunc nec arcu feugiat accumsan. 
-        Praesent mauris sem, eleifend sit amet tortor in, cursus vehicula arcu. Curabitur convallis sit amet nunc ac feugiat. 
-        Sed at risus id diam porta pretium id vel felis. Donec nec dui id nisl hendrerit laoreet eu id odio.</p>
+          <h3 class="text-red">Resturantes</h3>
+       <p> Digitaliza la gestión de tu restaurante con una plataforma que te permite organizar reservas, pedidos y turnos de trabajo. Aumenta la eficiencia, reduce errores y ofrece una mejor experiencia a tus clientes con herramientas pensadas para el día a día de la hostelería.</p>
         <button class="buttonY">Ver más</button>         
       </div>
       </div>
@@ -146,13 +112,7 @@
         </div>
          <div class="group-right">  
           <h3 class="text-red">Barbería</h3>
-       <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet eget lectus eu congue. Nam finibus urna eget nisl aliquam, 
-        in dictum ligula feugiat. Donec mollis ligula purus, et interdum velit bibendum eget. Aliquam magna diam, tristique eu libero nec, 
-        sagittis finibus sapien. Cras a ex ultricies, faucibus elit sagittis, maximus nisi. Donec quis arcu sapien. Aenean risus nibh, varius sed porttitor a, 
-        ornare nec leo. Sed vitae lacus in ipsum varius sagittis. Ut in quam cursus, ullamcorper sapien posuere, laoreet elit. Suspendisse interdum, 
-        risus ut ultricies scelerisque, nibh est commodo leo, sed tristique nisl odio et turpis. Fusce pellentesque nunc nec arcu feugiat accumsan. 
-        Praesent mauris sem, eleifend sit amet tortor in, cursus vehicula arcu. Curabitur convallis sit amet nunc ac feugiat. 
-        Sed at risus id diam porta pretium id vel felis. Donec nec dui id nisl hendrerit laoreet eu id odio.</p>
+       <p> Lleva tu barbería al siguiente nivel con un sistema que te ayuda a gestionar horarios, clientes y cobros desde cualquier dispositivo. Mejora la atención al cliente y ahorra tiempo con una solución ágil, moderna y pensada para negocios como el tuyo.</p>
         <button class="buttonY">Ver más</button>         
       </div>
       </div>
