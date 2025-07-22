@@ -12,22 +12,22 @@ $request = trim($request, '/');
 
 switch ($request) {
     case 'contacto':
-        include 'contacto.html';
+        include 'contacto.php';
         break;
     case 'quienes-somos':
-        include 'quienes-somos.html';
+        include 'quienes-somos.php';
         break;
     case 'productos':
-        include 'productos.html';
+        include 'productos.php';
         break;
     case 'precios':
-        include 'precios.html';
+        include 'precios.php';
         break;
     case 'porque-andara':
-        include 'porque-andara.html';
+        include 'porque-andara.php';
         break;
     default:
-        include 'index.html';
+        include 'home.php';
         break;
 }
 
