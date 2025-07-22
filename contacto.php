@@ -103,32 +103,33 @@
 </p>
                   </div>
                   <div class="right">
-                  <div class="grid2">
-                    <div class="mb-3">
-                        
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
-                      </div>
-                      <div class="mb-3">
-                      
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email">
-                      </div>
-                      </div>
-                         <div class="mb-3">
-                      
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ciudad">
-                      </div>
-                         <div class="mb-3">
-                      
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Teléfono">
-                      </div>
-                      <textarea type="input" col="3" class="form-control" placeholder="Comentario"></textarea>
-                      <button class="buttonR">Button</button>
-                      </div>
-                </div>
+<form id="contactForm" method="post">
+    <div class="grid2">
+        <div class="mb-3">
+            <input type="text" name="nombre" class="form-control" required placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <input type="email" name="email" class="form-control" required placeholder="Email">
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="text" name="ciudad" class="form-control" required placeholder="Ciudad">
+    </div>
+    <div class="mb-3">
+        <input type="tel" name="telefono" class="form-control" required placeholder="Teléfono">
+    </div>
+    <textarea name="comentario" cols="3" class="form-control" required placeholder="Comentario"></textarea>
+    <button type="submit" class="buttonR">Enviar</button>
+</form>
                
         </div>
     </div>
 </section>
+<div id="notification" class="notification">
+    <div class="notification-content">
+        <p id="notification-message"></p>
+    </div>
+</div>
 <footer>
   <div class="footerTop">
     <div class="content">
