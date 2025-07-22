@@ -15,16 +15,16 @@ switch ($request) {
         include 'contacto.html';
         break;
     case 'quienes-somos':
-        include 'team.html';
+        include 'quienes-somos.html';
         break;
     case 'productos':
-        include 'listado.html';
+        include 'productos.html';
         break;
     case 'precios':
-        include 'salon.html';
+        include 'precios.html';
         break;
     case 'porque-andara':
-        include 'benefit.html';
+        include 'porque-andara.html';
         break;
     default:
         include 'index.html';
