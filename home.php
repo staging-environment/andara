@@ -15,7 +15,7 @@
     <div class="content wrapper-body">
     <div class="topNav">
         <ul>
-            <li><a href="<?php echo SUX_SALON; ?>>/registrar-negocio" target="_blank">Regístrate</a></li>
+            <li><a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank">Regístrate</a></li>
             <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Haz login</a></li>
         </ul>
     </div>

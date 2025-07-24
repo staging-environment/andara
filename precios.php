@@ -78,7 +78,7 @@
       tu negocio hoy mismo.</p>
       <h4>¡Regístrate gratis
         y gestiona tus citas online!</h4>
-        <button class="button buttonR">Regístrate gratis</button>
+        <a href="<?php echo SUX_SALON; ?>/registrar-negocio" class="button buttonR" target="_blank">Regístrate gratis</a>
     </div>
     <div class="right">
     <img src="images/peluquera.png" />
