@@ -1,0 +1,20 @@
+# Ignorar configuración de JetBrains/PhpStorm
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Cache de PHP
+*.cache
+*.tmp
+
+# Composer
+# /vendor/
+/composer.lock
+
+# Entornos locales
+.env
