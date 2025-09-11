@@ -170,7 +170,7 @@
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="team-item-wrap mb-5">
 					<div class="team-item position-relative">
-						<img loading="lazy" src="images/member-2.jpg" alt="team" class="img-fluid w-100">
+						<img loading="lazy" src="images/member2.jpg" alt="team" class="img-fluid w-100">
 						<div class="team-img-hover">
 							<ul class="team-social list-inline">
 								<li class="list-inline-item">
@@ -186,8 +186,8 @@
 						</div>
 					</div>
 					<div class="team-item-content">
-						<h4 class="mt-3 mb-0 text-capitalize">Fernanda Requena</h4>
-						<p>CEO</p>
+						<h4 class="mt-3 mb-0 text-capitalize">Chabiona la loca</h4>
+						<p>Aragonés. Le gustan los premios. Se dedica a hacer esta web. Cuidado con él.</p>
 					</div>
 				</div>
 			</div>
@@ -195,7 +195,7 @@
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="team-item-wrap mb-5 ">
 					<div class="team-item position-relative">
-						<img loading="lazy" src="images/member-3.jpg" alt="team" class="img-fluid w-100">
+						<img loading="lazy" src="images/member3.jpg" alt="team" class="img-fluid w-100">
 						<div class="team-img-hover">
 							<ul class="team-social list-inline">
 								<li class="list-inline-item">
@@ -209,8 +209,8 @@
 						</div>
 					</div>
 					<div class="team-item-content">
-						<h4 class="mt-3 mb-0 text-capitalize">Julia Montalbán</h4>
-						<p>Relaciones laborales</p>
+						<h4 class="mt-3 mb-0 text-capitalize">Nely Borja</h4>
+						<p>Chief Marketing & Communications Officer (CMCO)</p>
 					</div>
 				</div>
 			</div>
