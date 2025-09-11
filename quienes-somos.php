@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <title>Hello, world!</title>
+    <title>Andara Soft</title>
   </head>
   <body>
     <div class="content wrapper-body">
@@ -95,9 +95,9 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="about-item pr-3 mb-5 mb-lg-0">
-					<span class="h6 text-red">What we are</span>
-					<h2 class="position-relative text-red">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h2>
-					<p class="mb-5">Allum similique ducimus accusamus laudantium praesentium, impedit quaerat, itaque maxime sunt deleniti voluptas distinctio.</p>
+					<span class="h6 text-red">Quiénes somos</span>
+					<h2 class="position-relative text-red">Conoce al equipo que da vida a Andara</h2>
+					<p class="mb-5">Somos un grupo de personas que cree en transformar la forma en que se gestionan las peluquerías y centros de estética. Detrás de cada línea de código, de cada idea y de cada mejora, hay pasión, esfuerzo y la convicción de que tu negocio merece herramientas de nivel profesional. Porque cuando tu equipo brilla, nosotros también lo hacemos.</p>
 
 					
 				</div>
@@ -119,20 +119,20 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="about-info-item mb-4 mb-lg-0">
-					<h3 class="mb-3"><span class="text-red mr-2 text-md ">01.</span>Misión</h3>
-					<p>llum similique ducimus accusamus laudantium praesentium, impedit quaerat, itaque maxime sunt deleniti voluptas distinctio .</p>
+					<h3 class="mb-3"><span class="text-red mr-2 text-md ">01. </span>Misión</h3>
+					<p>Impulsar a peluquerías y centros de estética con una gestión simple, eficiente y moderna que libere tiempo para lo que realmente importa: las personas.</p>
 				</div>		
 			</div>
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="about-info-item mb-4 mb-lg-0">
-					<h3 class="mb-3"><span class="text-red mr-2 text-md">02.</span>Visión</h3>
-					<p>llum similique ducimus accusamus laudantium praesentium, impedit quaerat, itaque maxime sunt deleniti voluptas distinctio .</p>
+					<h3 class="mb-3"><span class="text-red mr-2 text-md">02. </span>Visión</h3>
+					<p>Ser la herramienta de referencia que conecta innovación y belleza, llevando la gestión del sector a un nuevo nivel en España, Perú y más allá.</p>
 				</div>		
 			</div>
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="about-info-item mb-4 mb-lg-0">
-					<h3 class="mb-3"><span class="text-red mr-2 text-md">03.</span>Enfoque</h3>
-					<p>llum similique ducimus accusamus laudantium praesentium, impedit quaerat, itaque maxime sunt deleniti voluptas distinctio .</p>
+					<h3 class="mb-3"><span class="text-red mr-2 text-md">03. </span>Enfoque</h3>
+					<p>Ponemos a los negocios en el centro: escuchamos, aprendemos y adaptamos la tecnología a sus necesidades reales, con soluciones prácticas y escalables.</p>
 				</div>		
 			</div>
 		</div>
@@ -145,6 +145,7 @@
 				<div class="team-item-wrap mb-5">
 					<div class="team-item position-relative">
 						<img loading="lazy" src="images/member-1.jpg" alt="team" class="img-fluid w-100">
+                        <!--
 						<div class="team-img-hover">
 							<ul class="team-social list-inline">
 								<li class="list-inline-item">
@@ -159,10 +160,11 @@
 								</li>
 							</ul>
 						</div>
+						-->
 					</div>
 					<div class="team-item-content">
-						<h4 class="mt-3 mb-0 text-capitalize">Camilo Batallanos</h4>
-						<p>Marketing digital</p>
+						<h4 class="mt-3 mb-0 text-capitalize">José Antonio Rodríguez</h4>
+						<p>Director de Estrategia Comercial y Alianzas</p>
 					</div>
 				</div>
 			</div>
@@ -170,12 +172,13 @@
 			<div class="col-lg-4 col-md-6 col-sm-6">
 				<div class="team-item-wrap mb-5">
 					<div class="team-item position-relative">
-						<img loading="lazy" src="images/member2.jpg" alt="team" class="img-fluid w-100">
+                        <img loading="lazy" src="images/member2.jpg" alt="team" class="img-fluid w-100">
+                        <!--
 						<div class="team-img-hover">
 							<ul class="team-social list-inline">
 								<li class="list-inline-item">
 									<a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-								</li>								
+								</li>
 								<li class="list-inline-item">
 									<a href="https://www.instagram.com//" class="instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
 								</li>
@@ -184,10 +187,11 @@
 								</li>
 							</ul>
 						</div>
+						-->
 					</div>
 					<div class="team-item-content">
-						<h4 class="mt-3 mb-0 text-capitalize">Chabiona la loca</h4>
-						<p>Aragonés. Le gustan los premios. Se dedica a hacer esta web. Cuidado con él.</p>
+						<h4 class="mt-3 mb-0 text-capitalize">Chabi Maestre</h4>
+						<p>Director de Desarrollo e I+D+i</p>
 					</div>
 				</div>
 			</div>
@@ -196,6 +200,7 @@
 				<div class="team-item-wrap mb-5 ">
 					<div class="team-item position-relative">
 						<img loading="lazy" src="images/member3.jpg" alt="team" class="img-fluid w-100">
+                        <!--
 						<div class="team-img-hover">
 							<ul class="team-social list-inline">
 								<li class="list-inline-item">
@@ -207,10 +212,12 @@
 								</li>
 							</ul>
 						</div>
+						-->
 					</div>
 					<div class="team-item-content">
 						<h4 class="mt-3 mb-0 text-capitalize">Nely Borja</h4>
-						<p>Chief Marketing & Communications Officer (CMCO)</p>
+						<p>La voz de Andara, conectando con el mercado, construyendo marca y creando comunidad alrededor de la plataforma.
+                        </p>
 					</div>
 				</div>
 			</div>
