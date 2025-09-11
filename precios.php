@@ -103,7 +103,7 @@
       informes, lanza promociones, gestiona productos y servicios, y atrae
       más clientes con tu propia web. ¡Todo en una sola plataforma!
     </p>
-    <button class="button buttonY">Descubre cómo</button>
+              <a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank"><button class="button buttonY">Descubre cómo</button></a>
 </div>
 
 </div>
@@ -125,14 +125,19 @@
                     <h2 class="display-4 text-center mb-4 bgRed text-white">GRATIS</h2>
                     <div class="inside-body">
                     <ul class="list-unstyled mb-4">
-                        <li class="mb-3"><i class="fa fa-check"></i>Gestión de citas
-                          en tiempo real</li>
-                        <li class="mb-3"><i class="fa fa-check"></i>Control de horarios
-                          y disponibilidad</li>
-                        <li class="mb-3"><img src="images/uncheck.png" />Acceso a informes
-                          y estadísticas.</li>
-                        <li class="mb-3"><img src="images/uncheck.png" />Gestión avanzada
-                          de clientes</li>
+                        <li class="mb-3"><i class="fa fa-check"></i>Gestión de citas en tiempo real</li>
+                        <li class="mb-3"><i class="fa fa-check"></i>Gestión de cobros</li>
+                        <li class="mb-3"><i class="fa fa-check"></i>Control de horarios y disponibilidad</li>
+                        <li class="mb-3"><i class="fa fa-check"></i>Generación de plataforma web para clientes</li>
+                        <li class="mb-3"><i class="fa fa-check"></i>Gestión de un salón</li>
+                        <li class="mb-3"><img src="images/uncheck.png" />Multi gestión de salones (hasta 3)</li>
+                        <li class="mb-3"><img src="images/uncheck.png" />Acceso a informes y estadísticas.</li>
+                        <li class="mb-3"><img src="images/uncheck.png" />Creación de promociones</li>
+                        <li class="mb-3"><img src="images/uncheck.png" /></i>Calendario</li>
+                        <li class="mb-3"><img src="images/uncheck.png" /></i>Gestión de empleados y clientes</li>
+                        <li class="mb-3"><img src="images/uncheck.png" /></i>Productos y servicios</li>
+                        <li class="mb-3"><img src="images/uncheck.png" /></i>Gestión de caja</li>
+                        <li class="mb-3"><img src="images/uncheck.png" /></i>Hoja de gastos</li>
                     </ul>
                     <div class="buttons">
                         <a href="#" class="button btn-red bgRed text-white">ACTIVAR AHORA</a>
@@ -153,22 +158,23 @@
               </div>
               <div class="card-body">
 
-                  <h2 class="display-4 text-center mb-4 bgRed text-white">S/60
+                  <h2 class="display-4 text-center mb-4 bgRed text-white">S/120
                     MES</h2>
                     <div class="inside-body">
                   <ul class="list-unstyled mb-4">
-                      <li class="mb-3"><i class="fa fa-check"></i>Todas las funciones
-                        del plan básico</li>
-                      <li class="mb-3"><i class="fa fa-check"></i>Informes y
-                        estadísticas detallada</li>
-                      <li class="mb-3"><i class="fa fa-check"></i>Gestión avanzada
-                        de clientes</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Gestión de citas en tiempo real</li>
                       <li class="mb-3"><i class="fa fa-check"></i>Gestión de cobros</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Control de horarios y disponibilidad</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Generación de plataforma web para clientes</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Gestión de un salón</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Multi gestión de salones (hasta 3)</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Acceso a informes y estadísticas.</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Creación de promociones</li>
                       <li class="mb-3"><i class="fa fa-check"></i>Calendario</li>
-                      <li class="mb-3"><i class="fa fa-check"></i>Citas y eventos</li>
-                      <li class="mb-3"><i class="fa fa-check"></i>Gestion de empleado
-                        y clientes</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Gestión de empleados y clientes</li>
                       <li class="mb-3"><i class="fa fa-check"></i>Productos y servicios</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Gestión de caja</li>
+                      <li class="mb-3"><i class="fa fa-check"></i>Hoja de gastos</li>
                   </ul>
                   <div class="buttons">
                       <a href="#" class="button btn-red bgRed text-white">CONTRATAR</a>
@@ -188,7 +194,7 @@
                     una única cuenta.</p>
             </div>
             <div class="card-body">
-              <h2 class="display-4 text-center mb-4 bgRed text-white">S/60
+              <h2 class="display-4 text-center mb-4 bgRed text-white">S/250
                 MES</h2>
                 <div class="inside-body">
               <ul class="list-unstyled mb-4">
