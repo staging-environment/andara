@@ -158,7 +158,7 @@
               </div>
               <div class="card-body">
 
-                  <h2 class="display-4 text-center mb-4 bgRed text-white">S/120
+                  <h2 class="display-4 text-center mb-4 bgRed text-white">40 USD
                     MES</h2>
                     <div class="inside-body">
                   <ul class="list-unstyled mb-4">
@@ -194,7 +194,7 @@
                     una única cuenta.</p>
             </div>
             <div class="card-body">
-              <h2 class="display-4 text-center mb-4 bgRed text-white">S/250
+              <h2 class="display-4 text-center mb-4 bgRed text-white">100 USD
                 MES</h2>
                 <div class="inside-body">
               <ul class="list-unstyled mb-4">
