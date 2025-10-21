@@ -163,13 +163,13 @@
     <div class="list">
         <div class="item1">
             <div class="circle"></div>
-            <p>Misión <span>Ayudar a los negocios de belleza a digitalizarse de manera sencilla y rentable. </span></p>
+            <p>Misión <span>Digitalizarse de manera sencilla y rentable. </span></p>
         </div>
         <div class="item2">
             <div class="circle"></div>
             <p>Visión <span>Ser la plataforma líder en gestión de salones de belleza en Latinoamérica y Europa. </span></p>
         </div>
-        <div class="item3">
+        <div class="item2">
             <div class="circle"></div>
             <p>Valores <span>Cercanía, innovación, compromiso y soporte constante al cliente. </span></p>
         </div>
@@ -247,7 +247,7 @@
  
   <div class="footerBottom">
     <div class="content">
-      <p>There are many variations of passages </p>
+      <p>Visítanos en nuestras redes sociales</p>
       <div class="flexR inner">
 
       <div class="icons">
