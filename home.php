@@ -156,17 +156,22 @@
         NOSOTROS
     </h2>
     <p>
-        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in form. 
-        Duis aute irure dolor in reprehenderit in voluptate.
+        En Andara creemos que la tecnología puede transformar la forma en que gestionas tu negocio.
+        Somos un equipo apasionado por la innovación y el desarrollo de herramientas que simplifican la gestión diaria de peluquerías, barberías y centros de estética.
+        Nuestro objetivo es ayudarte a ahorrar tiempo, mejorar la atención al cliente y potenciar el crecimiento de tu empresa.
     </p>
     <div class="list">
         <div class="item1">
             <div class="circle"></div>
-            <p>Lorem ipsum dolor <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span></p>
+            <p>Misión <span>Ayudar a los negocios de belleza a digitalizarse de manera sencilla y rentable. </span></p>
         </div>
         <div class="item2">
-            <div class="circle2"></div>
-            <p>Lorem ipsum dolor <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span></p>
+            <div class="circle"></div>
+            <p>Visión <span>Ser la plataforma líder en gestión de salones de belleza en Latinoamérica y Europa. </span></p>
+        </div>
+        <div class="item3">
+            <div class="circle"></div>
+            <p>Valores <span>Cercanía, innovación, compromiso y soporte constante al cliente. </span></p>
         </div>
     </div>
 </div>
@@ -185,8 +190,8 @@
                     ¿Por qué elegir Andara?
                 </h2>
                 <p>
-                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in form. 
-        Duis aute irure dolor in reprehenderit in voluptate.
+                    En Andara reunimos todo lo que tu negocio necesita para crecer: una agenda intuitiva, control total de caja, gestión avanzada de clientes y un entorno adaptable a cualquier dispositivo.
+                    Con nosotros, tu negocio funciona mejor, más rápido y con menos estrés.
                 </p>
                 </div>
                 <div class="right">
@@ -213,18 +218,18 @@
                     Sé parte <span>de <br />nuestra</span> familia <br />Andara
                 </h2>
                 <p>
-                    There are many variations of passages 
+                    Comúnicate con nosotros y nos pondremos en contacto contigo.
                 </p>
                 <div class="form">
                     <div class="mb-3">
                         
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="input">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="E-mail">
                       </div>
                       <div class="mb-3">
                       
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="input">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Descripción">
                       </div>
-                      <button>Button</button>
+                      <button>Enviar</button>
                 </div>
                 </div>
         </div>
@@ -235,7 +240,7 @@
     <div class="content">
       <div class="flexR inner">
       <h3>Clientes:</h3>
-    <img src="images/clients.png" />
+          <img src="images/clients.png" />
   </div>
    <div class="divider"></div>
   
