@@ -74,8 +74,8 @@
        <p> Con nuestra plataforma, tendrás el control total de tu negocio: gestiona cobros, clientes, reservas y la caja diaria con unos cuantos clics. Ofrece a tus clientes una experiencia moderna y sencilla para reservar sus citas a través de una página web atractiva y fácil de usar.
 
            Con nuestra herramienta, optimizas tus procesos y ahorras tiempo, permitiéndote enfocarte en lo que realmente importa: la belleza y el bienestar de tus clientes. ¡Es hora de llevar tu negocio al siguiente nivel con una solución que entiende tus necesidades!</p>
-       <button class="buttonY">Ver más</button>         
-      </div>
+       <a href="/precios" class="buttonY">Ver más</a>
+     </div>
       </div>
      
       </div>
