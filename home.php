@@ -189,8 +189,7 @@
                     ¿Por qué elegir Andara?
                 </h2>
                 <p>
-                    En Andara reunimos todo lo que tu negocio necesita para crecer: una agenda intuitiva, control total de caja, gestión avanzada de clientes y un entorno adaptable a cualquier dispositivo.
-                    Con nosotros, tu negocio funciona mejor, más rápido y con menos estrés.
+                    Andará te ofrece todo lo que tú negocio necesita  para operar de manera organizada y trazable. Gestionar de manera sincronizada la agenda diaria, control de caja, etc.
                 </p>
                 </div>
                 <div class="right">
