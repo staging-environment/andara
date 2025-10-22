@@ -189,7 +189,7 @@
                     ¿Por qué elegir Andara?
                 </h2>
                 <p>
-                    Andará te ofrece todo lo que tú negocio necesita  para operar de manera organizada y trazable. Gestionar de manera sincronizada la agenda diaria, control de caja, etc.
+                    Andará te ofrece todo lo que tu negocio necesita para operar de manera organizada y trazable. Gestionar de manera sincronizada la agenda diaria, control de caja, etc.
                 </p>
                 </div>
                 <div class="right">
