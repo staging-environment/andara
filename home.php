@@ -30,12 +30,12 @@
                   Empieza a <span>transformar</span> tu negocio hoy
                 </h2>
                 <p>
-                  Comienza una demo gratuita y descubre lo fácil que es digitalizar tu peluquería.
+                  Comienza una demo gratuita y descubre lo fácil que es digitalizar tu negocio.
                 </p>
                   <a href="/precios" class buttonY>Quiero una demo</a>
               </div>
               <img src="images/slide1.png" class="fondo-slide" alt="...">
-              <h3>NUESTROS SOFTWARE</h3>
+              <h3>NUESTRO SOFTWARE</h3>
             </div>
            </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -156,8 +156,7 @@
         NOSOTROS
     </h2>
     <p>
-        En Andara creemos que la tecnología puede transformar la forma en que gestionas tu negocio.
-        Somos un equipo apasionado por la innovación y el desarrollo de herramientas que simplifican la gestión diaria de peluquerías, barberías y centros de estética.
+        Somos un equipo comprometido por la innovación y el desarrollo de herramientas que simplifican la gestión diaria de peluquerías, barberías y centros de estética.
         Nuestro objetivo es ayudarte a ahorrar tiempo, mejorar la atención al cliente y potenciar el crecimiento de tu empresa.
     </p>
     <div class="list">
@@ -215,7 +214,7 @@
             </div>
             <div class="right">
                 <h2>
-                    Sé parte <span>de <br />nuestra</span> familia <br />Andara
+                    Sé  <span>nuestro</span> SOCIO ESTRATÉGICO
                 </h2>
                 <p>
                     Comúnicate con nosotros y nos pondremos en contacto contigo.

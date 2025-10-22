@@ -82,7 +82,7 @@
  
   <div class="footerBottom">
     <div class="content">
-      <p>There are many variations of passages </p>
+      <p>Visítanos en nuestras redes sociales</p>
       <div class="flexR inner">
 
       <div class="icons">
