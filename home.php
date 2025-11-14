@@ -84,7 +84,7 @@
     <input type="radio" name="tabs" id="tab2">
     
         <div class="tab-label-content" id="tab2-content">
-      <label for="tab2">Resturantes</label>
+      <label for="tab2">Restaurantes</label>
     
       <div class="tab-content">
           <div class="group-left">          
@@ -92,7 +92,7 @@
                   
         </div>
          <div class="group-right">  
-          <h3 class="text-red">Resturantes</h3>
+          <h3 class="text-red">Restaurantes</h3>
        <p> Digitaliza la gestión de tu restaurante con una plataforma que te permite organizar reservas, pedidos y turnos de trabajo. Aumenta la eficiencia, reduce errores y ofrece una mejor experiencia a tus clientes con herramientas pensadas para el día a día de la hostelería.</p>
         <button class="buttonY">Ver más</button>         
       </div>
