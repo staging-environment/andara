@@ -37,6 +37,23 @@
               <img src="images/slide1.png" class="fondo-slide" alt="...">
               <h3>NUESTRO SOFTWARE</h3>
             </div>
+
+              <!-- Segunda slide -->
+              <div class="carousel-item">
+                  <div class="text-inner-slide">
+                      <h2>
+                          Descubre <span>nuevas oportunidades</span> para tu negocio
+                      </h2>
+                      <p>
+                          Optimiza tus procesos y atrae más clientes con nuestra solución.
+                      </p>
+                      <a href="/precios" class="buttonY">Ver precios</a>
+                  </div>
+                  <img src="images/slide2.png" class="fondo-slide" alt="Slide 2">
+                  <h3>NUEVAS FUNCIONALIDADES</h3>
+              </div>
+
+
            </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
