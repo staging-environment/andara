@@ -249,7 +249,7 @@
                 <li class="mb-3"><i class="fa fa-check"></i>Productos y servicios</li>
             </ul>
             <div class="buttons">
-                <a href="/contacto" class="button btn-red bgRed text-white">CONTRATAR</a>
+                <a href="/contacto" class="button btn-red bgRed text-white">SOLICITAR PRESUPUESTO</a>
             </div>
             </div>
         </div>

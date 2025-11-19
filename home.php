@@ -71,7 +71,7 @@
         </div>
          <div class="group-right">  
           <h3 class="text-red">Descubre la revolución digital en la gestión de peluquerías y centros de estética</h3>
-       <p> Con nuestra plataforma, tendrás el control total de tu negocio: gestiona cobros, clientes, reservas y la caja diaria con unos cuantos clics. Ofrece a tus clientes una experiencia moderna y sencilla para reservar sus citas a través de una página web atractiva y fácil de usar.
+       <p> Con nuestra plataforma, tendrás el control total de tu negocio: gestiona cobros, clientes, reservas y servicios con unos cuantos clics. Ofrece a tus clientes una experiencia moderna y sencilla para reservar sus citas a través de una página web atractiva y fácil de usar.
 
            Con nuestra herramienta, optimizas tus procesos y ahorras tiempo, permitiéndote enfocarte en lo que realmente importa: la belleza y el bienestar de tus clientes. ¡Es hora de llevar tu negocio al siguiente nivel con una solución que entiende tus necesidades!</p>
        <a href="/precios" class="buttonY">Ver más</a>
@@ -189,7 +189,7 @@
                     ¿Por qué elegir Andara?
                 </h2>
                 <p>
-                    Andará te ofrece todo lo que tu negocio necesita para operar de manera organizada y trazable. Gestionar de manera sincronizada la agenda diaria, control de caja, etc.
+                    Andará te ofrece todo lo que tu negocio necesita para operar de manera organizada y trazable. Gestionar de manera sincronizada la agenda diaria, control de productos y servicios, citas on-line, etc.
                 </p>
                 </div>
                 <div class="right">
@@ -197,7 +197,7 @@
                     <ul>
                         <li><img src="images/check.png" />Agenda digital con recordatorios automáticos</li>
                         <li><img src="images/check.png" />Gestión de clientes y fichas personalizadas</li>
-                        <li><img src="images/check.png" />Control de caja y métodos de pago</li>
+                        <li><img src="images/check.png" />Métodos de pago y generación de informes</li>
                         <li><img src="images/check.png" />Sistema multiusuario con roles</li>
                         <li><img src="images/check.png" />Compatible con móviles, tablets y Pc</li>
                     </ul>
