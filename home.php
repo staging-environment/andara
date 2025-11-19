@@ -16,7 +16,7 @@
     <div class="topNav">
         <ul>
             <li><a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank">Regístrate</a></li>
-            <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Haz login</a></li>
+            <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Inicia sesión</a></li>
         </ul>
     </div>
     <?php include 'cabecera.php'; ?>
@@ -62,7 +62,7 @@
   
     <input type="radio" name="tabs" id="tab1" checked>
     <div class="tab-label-content" id="tab1-content">
-      <label for="tab1">Estética</label>
+      <!--label for="tab1">Estética</label-->
     
       <div class="tab-content">
           <div class="group-left">          
@@ -84,7 +84,7 @@
     <input type="radio" name="tabs" id="tab2">
     
         <div class="tab-label-content" id="tab2-content">
-      <label for="tab2">Restaurantes</label>
+      <!--label for="tab2">Restaurantes</label-->
     
       <div class="tab-content">
           <div class="group-left">          
@@ -103,7 +103,7 @@
     <input type="radio" name="tabs" id="tab3">
    
         <div class="tab-label-content" id="tab3-content">
-      <label for="tab3">Barbería</label>
+      <!--label for="tab3">Barbería</label-->
     
       <div class="tab-content">
           <div class="group-left">          
@@ -121,7 +121,7 @@
   
      <input type="radio" name="tabs" id="tab4">
        <div class="tab-label-content" id="tab4-content">
-      <label for="tab4">Cafetería</label>
+      <!--label for="tab4">Cafetería</label-->
     
       <div class="tab-content">
           <div class="group-left">          
@@ -220,15 +220,48 @@
                 </p>
                 <div class="form">
                     <div class="mb-3">
-                        
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="E-mail">
-                      </div>
-                      <div class="mb-3">
-                      
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Descripción">
-                      </div>
-                      <button>Enviar</button>
+                        <input type="text" class="form-control" id="nombreInput" placeholder="Nombre">
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="emailInput" placeholder="E-mail">
+                    </div>
+
+                    <a id="consultarLink" href="#">
+                        <button type="button">Consultar</button>
+                    </a>
                 </div>
+
+                <script>
+                    document.getElementById("consultarLink").addEventListener("click", function (e) {
+                        const nombre = document.getElementById("nombreInput").value.trim();
+                        const email  = document.getElementById("emailInput").value.trim();
+
+                        // Validación de nombre obligatorio
+                        if (nombre.length === 0) {
+                            e.preventDefault();
+                            alert("Por favor, introduce tu nombre.");
+                            return;
+                        }
+
+                        // Validación sencilla de email
+                        function esEmailValido(email) {
+                            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            return re.test(email);
+                        }
+
+                        if (!esEmailValido(email)) {
+                            e.preventDefault();
+                            alert("Por favor, introduce un email válido.");
+                            return;
+                        }
+
+                        // Si todo está bien, construimos la URL con parámetros
+                        const url = `/contacto?nombre=${encodeURIComponent(nombre)}&email=${encodeURIComponent(email)}`;
+
+                        this.href = url;
+                    });
+                </script>
                 </div>
         </div>
     </div>
@@ -237,30 +270,32 @@
   <div class="footerTop">
     <div class="content">
       <div class="flexR inner">
-      <h3>Clientes:</h3>
-          <img src="images/clients.png" />
-  </div>
-   <div class="divider"></div>
-  
- 
-  <div class="footerBottom">
-    <div class="content">
-      <p>Visítanos en nuestras redes sociales</p>
-      <div class="flexR inner">
-
-      <div class="icons">
-      <i class="fab fa-facebook-f"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-linkedin"></i>
-    </div>
+          <!--
+          <h3>Clientes:</h3>
+              <img src="images/clients.png" />
+              -->
       </div>
-  </div>
-  </div>
-</div>
-</div>
-</footer>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-     <script src="js/app.js"></script>
-  </body>
-</html>
+       <div class="divider"></div>
+
+
+      <div class="footerBottom">
+        <div class="content">
+          <p>Visítanos en nuestras redes sociales</p>
+          <div class="flexR inner">
+
+          <div class="icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-linkedin"></i>
+        </div>
+          </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+         <script src="js/app.js"></script>
+      </body>
+    </html>

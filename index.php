@@ -5,13 +5,16 @@ $base_url = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') . '/';
 // Obtenemos la ruta solicitada por el usuario
 $request = $_SERVER['REQUEST_URI'];
 
-// Limpiamos la ruta de posibles parámetros
+// Limpiamos barras
 $request = trim($request, '/');
 
-// Incluimos variables de configuracion
-include 'includes/variables_configuracion.php';
+// Quitamos parámetros tipo ?nombre=xxx&email=yyy
+if (strpos($request, '?') !== false) {
+    $request = strstr($request, '?', true);
+}
 
-// En función de la ruta, decidimos qué contenido cargar
+// Incluimos variables de configuración
+include 'includes/variables_configuracion.php';
 
 switch ($request) {
     case 'contacto':
@@ -33,8 +36,3 @@ switch ($request) {
         include 'home.php';
         break;
 }
-
-// Puedes hacer un pequeño router aquí
-echo "Has accedido a: " . htmlspecialchars($request);
-
-// Aquí podrías incluir lógica de enrutamiento, carga de controladores, etc.

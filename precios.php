@@ -17,7 +17,7 @@
     <div class="topNav">
         <ul>
             <li><a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank">Regístrate</a></li>
-            <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Haz login</a></li>
+            <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Inicia sesión</a></li>
         </ul>
     </div>
     <?php include 'cabecera.php'; ?>
@@ -77,7 +77,7 @@
       y eficiente. Empieza a optimizar
       tu negocio hoy mismo.</p>
       <h4>¡Regístrate gratis
-        y gestiona tus citas online!</h4>
+        y gestiona tus citas online! Podrás testear la versión completa totalmente gratis durante dos meses.</h4>
         <a href="<?php echo SUX_SALON; ?>/registrar-negocio" class="button buttonR" target="_blank">Regístrate gratis</a>
     </div>
     <div class="right">
@@ -101,7 +101,7 @@
       Gestiona tu negocio de forma integral: agenda citas online, controla
       cobros y pagos, administra clientes, empleados y horarios, genera
       informes, lanza promociones, gestiona productos y servicios, y atrae
-      más clientes con tu propia web. ¡Todo en una sola plataforma!
+      más clientes con tu propia web. ¡Todo en una sola plataforma! No se realizan contrataciones anuales. El pago se realiza de forma mensual, y si no te convence, te pasas a la versión reducida de forma gratuita. Sin letra pequeña.
     </p>
               <a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank"><button class="button buttonY">Descubre cómo</button></a>
 </div>
@@ -120,6 +120,7 @@
                       <p>Ideal para quienes
                         solo necesitan una
                         presencia digital</p>
+                    <h3 class="mb-1">¡DOS MESES GRATIS DE PRUEBA VERSIÓN COMPLETA!</h3>
                 </div>
                 <div class="card-body">
                     <h2 class="display-4 text-center mb-4 bgRed text-white">GRATIS</h2>
@@ -140,7 +141,7 @@
                         <li class="mb-3"><img src="images/uncheck.png" /></i>Hoja de gastos</li>
                     </ul>
                     <div class="buttons">
-                        <a href="/contacto" class="button btn-red bgRed text-white">ACTIVAR AHORA</a>
+                        <a href="https://simplytech.es/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
                     </div>
                   </div>
                 </div>
@@ -155,10 +156,11 @@
                       para una única
                       sucursal con hasta
                       5 empleados</p>
+                  <h3 class="mb-1">¡DOS MESES GRATIS DE PRUEBA!</h3>
               </div>
               <div class="card-body">
 
-                  <h2 class="display-4 text-center mb-4 bgRed text-white">40 USD
+                  <h2 class="display-4 text-center mb-4 bgRed text-white">S/. 140
                     MES</h2>
                     <div class="inside-body">
                   <ul class="list-unstyled mb-4">
@@ -177,7 +179,7 @@
                       <li class="mb-3"><i class="fa fa-check"></i>Hoja de gastos</li>
                   </ul>
                   <div class="buttons">
-                      <a href="/contacto" class="button btn-red bgRed text-white">CONTRATAR</a>
+                      <a href="https://simplytech.es/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
                   </div>
                   </div>
               </div>
@@ -192,9 +194,10 @@
                     sucursales y hasta
                     15 empleados desde
                     una única cuenta.</p>
+                <h3 class="mb-1">¡DOS MESES GRATIS DE PRUEBA!</h3>
             </div>
             <div class="card-body">
-              <h2 class="display-4 text-center mb-4 bgRed text-white">100 USD
+              <h2 class="display-4 text-center mb-4 bgRed text-white">S/. 400
                 MES</h2>
                 <div class="inside-body">
               <ul class="list-unstyled mb-4">
@@ -212,7 +215,7 @@
                   <li class="mb-3"><i class="fa fa-check"></i>Productos y servicios</li>
               </ul>
               <div class="buttons">
-                  <a href="/contacto" class="button btn-red bgRed text-white">CONTRATAR</a>
+                  <a href="https://simplytech.es/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
               </div>
               </div>
           </div>
@@ -260,8 +263,10 @@
   <div class="footerTop">
     <div class="content">
       <div class="flexR inner">
+          <!--
       <h3>Clientes:</h3>
     <img src="images/clients.png" />
+    -->
   </div>
    <div class="divider"></div>
   

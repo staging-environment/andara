@@ -16,7 +16,7 @@
     <div class="topNav">
 		<ul>
 			<li><a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank">Regístrate</a></li>
-			<li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Haz login</a></li>
+			<li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Inicia sesión</a></li>
 		</ul>
     </div>
     <?php include 'cabecera.php'; ?>
@@ -236,8 +236,10 @@
   <div class="footerTop">
     <div class="content">
       <div class="flexR inner">
+          <!--
       <h3>Clientes:</h3>
     <img src="images/clients.png" />
+    -->
   </div>
    <div class="divider"></div>
   

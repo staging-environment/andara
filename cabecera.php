@@ -14,9 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/precios">Precios</a>
             </li>
-            <li class="nav-item">
+            <!--li class="nav-item">
                 <a class="nav-link" href="/productos">Productos </a>
-            </li>
+            </li-->
             <li class="nav-item">
                 <a class="nav-link" href="/porque-andara">¿Por qué nosotros? </a>
             </li>

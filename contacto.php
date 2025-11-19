@@ -1,3 +1,8 @@
+<?php
+  $nombre = isset($_GET['nombre']) ? htmlspecialchars($_GET['nombre']) : '';
+  $email  = isset($_GET['email'])  ? htmlspecialchars($_GET['email'])  : '';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,7 +21,7 @@
     <div class="topNav">
         <ul>
             <li><a href="<?php echo SUX_SALON; ?>/registrar-negocio" target="_blank">Regístrate</a></li>
-            <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Haz login</a></li>
+            <li><a href="<?php echo SUX_SALON; ?>/login" target="_blank">Inicia sesión</a></li>
         </ul>
     </div>
     <?php include 'cabecera.php'; ?>
@@ -106,10 +111,10 @@
 <form id="contactForm" method="post">
     <div class="grid2">
         <div class="mb-3">
-            <input type="text" name="nombre" class="form-control" required placeholder="Nombre">
+            <input type="text" name="nombre" class="form-control" required placeholder="Nombre" value="<?php echo $nombre; ?>">
         </div>
         <div class="mb-3">
-            <input type="email" name="email" class="form-control" required placeholder="Email">
+            <input type="email" name="email" class="form-control" required placeholder="Email" value="<?php echo $email; ?>">
         </div>
     </div>
     <div class="mb-3">
@@ -134,8 +139,10 @@
   <div class="footerTop">
     <div class="content">
       <div class="flexR inner">
+          <!--
       <h3>Clientes:</h3>
     <img src="images/clients.png" />
+    -->
   </div>
    <div class="divider"></div>
   
