@@ -813,6 +813,9 @@
     .list-unstyled {
         padding: 1em !important;
     }
+	.weAre .right {
+		top: 0;
+	}
 }
 
 @media only screen and (max-width: 320px) {
@@ -989,7 +992,7 @@
         text-align: center;
         background: #ff0018;
     }
-
+	
     .slide p {
         width: 90%;
     }
@@ -1126,6 +1129,9 @@
     .weAre .right img {
     width: 100%;
     }
+	.weAre .right {
+		top: 0;
+	}
     .tab-wrap {
         flex-direction: column;
     }

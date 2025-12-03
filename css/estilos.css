@@ -447,10 +447,12 @@ div#tab4-content label {
 /*******weAre*****/
 .weAre {
     background: var(--rojo);
-    height: 520px;
+    height: 518px;
 
 }
-
+.weAre .right img {
+    min-width: 108%;
+}
 .text-box {
     color: #fff;
 }
@@ -807,7 +809,7 @@ section.business .left {
     box-shadow: none !important;
     border: 3px solid var(--rojo) !important;
     border-radius: 0;
-    background: transparent;
+    background: #fff;
 
     .card-header {
         background-color: transparent !important;
