@@ -458,7 +458,7 @@ div#tab4-content label {
 }
 
 .text-box h2 {
-    font-size: 3em;
+    font-size: 2em;
     font-family: 'PoppinsBold';
 }
 
@@ -560,7 +560,7 @@ div#tab4-content label {
     color: var(--rojo);
     font-family: 'PoppinsBlack';
     text-transform: uppercase;
-    font-size: 4.3em;
+    font-size: 3em;
     font-weight: bold;
     width: 90%;
     line-height: 1;
@@ -590,7 +590,7 @@ div#tab4-content label {
 .formulario h2 {
     font-family: 'PoppinsBold';
     text-transform: uppercase;
-    font-size: 3.5em;
+    font-size: 3em;
     color: var(--amarillo);
     line-height: 1;
 }
@@ -1014,7 +1014,7 @@ section.container-fluid.benefits h2 {
         max-width: 100%;
 
         h2 {
-            font-size: 4em;
+            font-size: 3em;
             font-family: 'PoppinsBold';
             width: 30%;
             text-align: center;
@@ -1132,7 +1132,7 @@ section.container-fluid.benefits h2 {
 }
 
 h2.position-relative.text-red {
-    font-size: 3.7em;
+    font-size: 3em;
     font-family: 'PoppinsBold';
 }
 
