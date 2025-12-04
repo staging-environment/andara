@@ -916,7 +916,7 @@ section.business .left {
 }
 
 section.container-fluid.benefits h2 {
-    font-size: 3.5em;
+    font-size: 2em;
     font-family: 'PoppinsBold';
     text-align: center;
     width: 50%;
@@ -1014,7 +1014,7 @@ section.container-fluid.benefits h2 {
         max-width: 100%;
 
         h2 {
-            font-size: 3em;
+            font-size: 2em;
             font-family: 'PoppinsBold';
             width: 30%;
             text-align: center;
@@ -1132,7 +1132,7 @@ section.container-fluid.benefits h2 {
 }
 
 h2.position-relative.text-red {
-    font-size: 3em;
+    font-size: 2em;
     font-family: 'PoppinsBold';
 }
 
