@@ -143,7 +143,7 @@
                         <li class="mb-3"><img src="images/uncheck.png" /></i>Hoja de gastos</li>
                     </ul>
                     <div class="buttons">
-                        <a href="https://simplytech.es/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
+                        <a href="https://andarasalon.com/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
                     </div>
                   </div>
                 </div>
@@ -181,7 +181,7 @@
                       <li class="mb-3"><i class="fa fa-check"></i>Hoja de gastos</li>
                   </ul>
                   <div class="buttons">
-                      <a href="https://simplytech.es/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
+                      <a href="https://andarasalon.com/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
                   </div>
                   </div>
               </div>
@@ -217,7 +217,7 @@
                   <li class="mb-3"><i class="fa fa-check"></i>Productos y servicios</li>
               </ul>
               <div class="buttons">
-                  <a href="https://simplytech.es/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
+                  <a href="https://andarasalon.com/registrar-negocio" target="_blank" class="button btn-red bgRed text-white">CONTRATAR</a>
               </div>
               </div>
           </div>

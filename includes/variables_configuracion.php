@@ -10,6 +10,6 @@ $smtp_from_name = 'Formulario Andara';
 $smtp_to_email = 'jarodriguezbonilla@gmail.com';    
 
 // Entorno de herramienta de configuración SUX SALON
-define('SUX_SALON', 'https://simplytech.es');
+define('SUX_SALON', 'https://andarasalon.com');
 
 ?>
