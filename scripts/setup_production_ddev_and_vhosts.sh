@@ -1,21 +1,32 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Script de Configuración en Producción (vmi2545399 - 75.119.136.151):
-# 1. Asegura que la red Docker ddev_default tenga subred IPAM explícita para
+# 1. Configura safe.directory en git para evitar errores de dubious ownership.
+# 2. Asegura que la red Docker ddev_default tenga subred IPAM explícita para
 #    permitir IPs estáticas (ipv4_address) en los contenedores.
-# 2. Fija las IPs internas de Docker (.ddev/docker-compose.static-ip.yaml) en
-#    todos los proyectos DDEV de /home/developer/Projects/* y sincroniza los
-#    VirtualHosts de /etc/apache2/sites-available/*.conf para que al reiniciar
-#    Docker nunca cambien las IPs ni fallen las redirecciones del proxy inverso.
-# 3. Levanta DDEV en /home/developer/Projects/andarasalon.
-# 4. Crea y activa el VirtualHost de proxy inverso en Apache para andarasoft.com
+# 3. Fija las IPs internas de Docker (.ddev/docker-compose.static-ip.yaml) en
+#    todos los proyectos DDEV de /home/developer/Projects/* (y subcarpetas como
+#    public_html) y sincroniza los VirtualHosts de /etc/apache2/sites-available/
+#    para que al reiniciar Docker nunca cambien las IPs ni fallen las
+#    redirecciones del proxy inverso.
+# 4. Levanta DDEV en /home/developer/Projects/andarasalon/public_html.
+# 5. Crea y activa el VirtualHost de proxy inverso en Apache para andarasoft.com
 #    (andarasoft.com.conf y andarasoft.com-le-ssl.conf).
 # ==============================================================================
 set -euo pipefail
 
 PROJECTS_DIR="/home/developer/Projects"
-ANDARA_DIR="/home/developer/Projects/andarasalon"
+if [ -d "/home/developer/Projects/andarasalon/public_html/.git" ]; then
+    ANDARA_DIR="/home/developer/Projects/andarasalon/public_html"
+else
+    ANDARA_DIR="/home/developer/Projects/andarasalon"
+fi
 APACHE_SITES_AVAIL="/etc/apache2/sites-available"
+
+echo "=== [0/6] Configurando safe.directory en Git y permisos de developer ==="
+git config --global --add safe.directory '*' || true
+su - developer -c "git config --global --add safe.directory '*'" || true
+chown -R developer:developer "$ANDARA_DIR"
 
 echo "=== [1/6] Habilitando módulos de Proxy Inverso y SSL en Apache ==="
 a2enmod proxy proxy_http headers rewrite ssl >/dev/null 2>&1 || true
@@ -36,21 +47,24 @@ echo "Red ddev_default detectada: Subred=${SUBNET}, Gateway=${GATEWAY}, Prefijo=
 
 echo "=== [3/6] Fijando IPs internas a fuego en todos los proyectos DDEV ==="
 declare -A PROJ_IPS
-declare -A DDEV_NAMES
 NEXT_OCTET=10
 
-for proj_path in "$PROJECTS_DIR"/*; do
-    [ -d "$proj_path/.ddev" ] || continue
+# Buscar todos los directorios con .ddev hasta 2 niveles dentro de /home/developer/Projects
+mapfile -t DDEV_DIRS < <(find "$PROJECTS_DIR" -maxdepth 3 -type d -name ".ddev" | sort)
+
+for ddev_dir in "${DDEV_DIRS[@]}"; do
+    proj_path=$(dirname "$ddev_dir")
+    [ -f "$proj_path/.ddev/config.yaml" ] || continue
     proj_dir_name=$(basename "$proj_path")
+    parent_dir_name=$(basename "$(dirname "$proj_path")")
     ddev_name=$(grep -E '^name:' "$proj_path/.ddev/config.yaml" | awk '{print $2}' | tr -d '"'\''' || true)
     [ -n "$ddev_name" ] || continue
-    DDEV_NAMES["$proj_path"]="$ddev_name"
 
     container_name="ddev-${ddev_name}-web"
     assigned_ip=""
 
     # A) Buscar si hay un VirtualHost en /etc/apache2/sites-available/ que apunte a una IP 172.x.x.x para este proyecto
-    for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf; do
+    for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf "${APACHE_SITES_AVAIL}/${parent_dir_name}"*.conf; do
         [ -f "$candidate" ] || continue
         vhost_ip=$(grep -E "ProxyPass\s+/" "$candidate" 2>/dev/null | grep -oE '172\.[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)
         if [ -n "$vhost_ip" ]; then
@@ -89,7 +103,7 @@ for proj_path in "$PROJECTS_DIR"/*; do
     fi
 
     PROJ_IPS["$proj_path"]="$assigned_ip"
-    echo " -> Proyecto [$ddev_name] ($proj_dir_name): IP interna fijada en ${assigned_ip}"
+    echo " -> Proyecto [$ddev_name] ($proj_path): IP interna fijada en ${assigned_ip}"
 
     cat > "$proj_path/.ddev/docker-compose.static-ip.yaml" <<EOF
 services:
@@ -101,7 +115,7 @@ EOF
     chown developer:developer "$proj_path/.ddev/docker-compose.static-ip.yaml"
 
     # Si existe un VirtualHost para este proyecto con una IP 172.x.x.x distinta, actualizarla a su IP fija
-    for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf; do
+    for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf "${APACHE_SITES_AVAIL}/${parent_dir_name}"*.conf; do
         [ -f "$candidate" ] || continue
         if grep -qE 'http://172\.[0-9]+\.[0-9]+\.[0-9]+' "$candidate"; then
             sed -i -E "s|http://172\.[0-9]+\.[0-9]+\.[0-9]+|http://${assigned_ip}|g" "$candidate"
@@ -120,6 +134,7 @@ fi
 
 echo "=== [5/6] Levantando todos los entornos DDEV con sus IPs fijas ==="
 ANDARA_IP="${PROJ_IPS[$ANDARA_DIR]:-${SUBNET_PREFIX}.20}"
+mkdir -p "$ANDARA_DIR/.ddev"
 cat > "$ANDARA_DIR/.ddev/docker-compose.static-ip.yaml" <<EOF
 services:
   web:
@@ -127,11 +142,10 @@ services:
       ddev_default:
         ipv4_address: ${ANDARA_IP}
 EOF
-chown developer:developer "$ANDARA_DIR/.ddev/docker-compose.static-ip.yaml"
+chown -R developer:developer "$ANDARA_DIR/.ddev"
 
 for proj_path in "${!PROJ_IPS[@]}"; do
-    proj_dir_name=$(basename "$proj_path")
-    echo "Arrancando DDEV en $proj_dir_name (IP fija: ${PROJ_IPS[$proj_path]})..."
+    echo "Arrancando DDEV en $proj_path (IP fija: ${PROJ_IPS[$proj_path]})..."
     su - developer -c "cd '$proj_path' && ddev start"
 done
 
@@ -198,9 +212,9 @@ apache2ctl configtest
 systemctl reload apache2
 
 echo "=== [Extra] Configurando auto-despliegue continuo (/etc/cron.d/andara-autodeploy) ==="
-cat > /etc/cron.d/andara-autodeploy <<'EOF'
+cat > /etc/cron.d/andara-autodeploy <<EOF
 # Auto-sync de Andara desde GitHub (origin/main) cada minuto
-* * * * * developer cd /home/developer/Projects/andarasalon && git fetch origin main >/dev/null 2>&1 && [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ] && git pull origin main >/dev/null 2>&1
+* * * * * developer cd ${ANDARA_DIR} && git fetch origin main >/dev/null 2>&1 && [ "\$(git rev-parse HEAD)" != "\$(git rev-parse origin/main)" ] && git pull origin main >/dev/null 2>&1
 EOF
 chmod 644 /etc/cron.d/andara-autodeploy
 

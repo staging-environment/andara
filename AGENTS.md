@@ -11,7 +11,7 @@ Este documento recoge la configuración del entorno, arquitectura, accesos de pr
 - **Dirección IP:** `75.119.136.151`
 - **Usuario SSH:** `root`
 - **Comando de Acceso SSH:** `ssh root@75.119.136.151`
-- **Ruta del Proyecto en Producción:** `/home/developer/Projects/andarasalon`
+- **Ruta del Proyecto en Producción:** `/home/developer/Projects/andarasalon/public_html`
 - **Arquitectura en Producción (Proxy Inverso Apache + DDEV):**
   - **Proxy Inverso Host:** `Apache/2.4.58 (Ubuntu)` (`/etc/apache2/sites-available/andarasoft.com.conf` y `andarasoft.com-le-ssl.conf`)
   - **Contenedor Web DDEV:** `ddev-andara-web`
@@ -77,9 +77,9 @@ Cada vez que se realice y verifique un cambio en el repositorio:
    git push origin main
    ```
 2. **Despliegue en el Servidor de Producción (`75.119.136.151`):**
-   - Ruta en producción: `/home/developer/Projects/andarasalon`
+   - Ruta en producción: `/home/developer/Projects/andarasalon/public_html`
    - Comando de despliegue por SSH:
      ```bash
-     ssh root@75.119.136.151 "cd /home/developer/Projects/andarasalon && git pull origin main"
+     ssh root@75.119.136.151 "cd /home/developer/Projects/andarasalon/public_html && git pull origin main"
      ```
    - *Nota sobre el entorno de ejecución:* Desde el entorno **Local / Escritorio (WSL)** se dispone de conexión SSH directa con claves locales hacia `root@75.119.136.151`. Desde el **Agente Cloud (`☁️`)**, el proxy del sandbox (`agy-plugin-proxy`) solo permite tráfico HTTP/HTTPS saliente y bloquea conexiones TCP crudas al puerto `22` (`SSH`), pero sí permite verificar el estado HTTP/HTTPS público de `https://andarasoft.com` (`75.119.136.151`) y hacer `git push origin main`.
