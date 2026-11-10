@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Script de Configuración en Producción (vmi2545399 - 75.119.136.151):
-# 1. Configura safe.directory en git para evitar errores de dubious ownership.
+# 1. Detecta dónde está alojado andarasoft.com (o lo clona en
+#    /home/developer/Projects/andara si no existe aún en Projects).
 # 2. Asegura que la red Docker ddev_default tenga subred IPAM explícita para
-#    permitir IPs estáticas (ipv4_address) en los contenedores.
+#    permitir IPs estáticas (ipv4_address) a fuego en los contenedores.
 # 3. Fija las IPs internas de Docker (.ddev/docker-compose.static-ip.yaml) en
-#    todos los proyectos DDEV de /home/developer/Projects/* (y subcarpetas como
-#    public_html) y sincroniza los VirtualHosts de /etc/apache2/sites-available/
-#    para que al reiniciar Docker nunca cambien las IPs ni fallen las
-#    redirecciones del proxy inverso.
-# 4. Levanta DDEV en /home/developer/Projects/andarasalon/public_html.
+#    todos los proyectos DDEV de /home/developer/Projects/* y sincroniza los
+#    VirtualHosts de /etc/apache2/sites-available/*.conf.
+# 4. Levanta DDEV en Andara y en todos los contenedores activos.
 # 5. Crea y activa el VirtualHost de proxy inverso en Apache para andarasoft.com
 #    (andarasoft.com.conf y andarasoft.com-le-ssl.conf).
 # ==============================================================================
@@ -18,37 +17,30 @@ set -euo pipefail
 PROJECTS_DIR="/home/developer/Projects"
 APACHE_SITES_AVAIL="/etc/apache2/sites-available"
 
-echo "=== [0/6] Configurando safe.directory en Git y detectando ruta de Andara ==="
+echo "=== [0/6] Configurando safe.directory en Git y localizando proyecto Andara ==="
 git config --global --add safe.directory '*' || true
 su - developer -c "git config --global --add safe.directory '*'" || true
 
-# Detectar dónde reside el código de andara (andarasoft.com)
-if [ -f "/home/developer/Projects/andarasalon/public_html/porque-andara.php" ]; then
-    ANDARA_DIR="/home/developer/Projects/andarasalon/public_html"
-elif [ -f "/home/developer/Projects/andarasalon/porque-andara.php" ]; then
-    ANDARA_DIR="/home/developer/Projects/andarasalon"
-elif [ -f "/home/developer/Projects/andara/porque-andara.php" ]; then
-    ANDARA_DIR="/home/developer/Projects/andara"
+# Buscar si ya existe el repositorio de andara (andarasoft.com)
+FOUND_ANDARA=$(find /home/developer/Projects -maxdepth 3 -name "porque-andara.php" 2>/dev/null | head -n1 || true)
+if [ -n "$FOUND_ANDARA" ]; then
+    ANDARA_DIR=$(dirname "$FOUND_ANDARA")
+    echo " -> Encontrado proyecto Andara existente en: ${ANDARA_DIR}"
 else
-    FOUND_FILE=$(find /home/developer/Projects /var/www -maxdepth 4 -name "porque-andara.php" 2>/dev/null | head -n1 || true)
-    if [ -n "$FOUND_FILE" ]; then
-        ANDARA_DIR=$(dirname "$FOUND_FILE")
-    else
-        ANDARA_DIR="/home/developer/Projects/andara"
+    ANDARA_DIR="/home/developer/Projects/andara"
+    echo " -> Clonando https://github.com/staging-environment/andara.git en ${ANDARA_DIR}..."
+    if [ ! -d "$ANDARA_DIR/.git" ]; then
         su - developer -c "git clone https://github.com/staging-environment/andara.git '$ANDARA_DIR'"
     fi
 fi
 
-echo "Ruta de Andara detectada: ${ANDARA_DIR}"
 chown -R developer:developer "$ANDARA_DIR"
-if [ -d "$ANDARA_DIR/.git" ]; then
-    su - developer -c "cd '$ANDARA_DIR' && git pull origin main" || true
-fi
+su - developer -c "cd '$ANDARA_DIR' && git remote set-url origin https://github.com/staging-environment/andara.git && git pull origin main" || true
 
 echo "=== [1/6] Habilitando módulos de Proxy Inverso y SSL en Apache ==="
 a2enmod proxy proxy_http headers rewrite ssl >/dev/null 2>&1 || true
 
-echo "=== [2/6] Verificando red Docker ddev_default y soporte de IPs estáticas ==="
+echo "=== [2/6] Verificando red Docker ddev_default ==="
 if ! docker network inspect ddev_default >/dev/null 2>&1; then
     docker network create --driver bridge --subnet=172.18.0.0/16 --gateway=172.18.0.1 --label com.ddev.platform=ddev ddev_default
 fi
@@ -60,13 +52,17 @@ if [ -z "$SUBNET" ]; then
     GATEWAY="172.18.0.1"
 fi
 SUBNET_PREFIX=$(echo "$SUBNET" | cut -d'.' -f1-3)
-echo "Red ddev_default detectada: Subred=${SUBNET}, Gateway=${GATEWAY}, Prefijo=${SUBNET_PREFIX}"
+echo " -> Red ddev_default: Subred=${SUBNET}, Gateway=${GATEWAY}"
+
+# Guardar qué proyectos DDEV estaban corriendo actualmente antes de tocar la red
+mapfile -t RUNNING_WEB_CONTAINERS < <(docker ps --format '{{.Names}}' | grep '^ddev-.*-web$' || true)
+echo " -> Contenedores web DDEV activos actualmente: ${RUNNING_WEB_CONTAINERS[*]:-ninguno}"
 
 echo "=== [3/6] Fijando IPs internas a fuego en todos los proyectos DDEV ==="
 declare -A PROJ_IPS
+declare -A PROJ_SHOULD_START
 NEXT_OCTET=10
 
-# Buscar todos los directorios con .ddev hasta 2 niveles dentro de /home/developer/Projects
 mapfile -t DDEV_DIRS < <(find "$PROJECTS_DIR" -maxdepth 3 -type d -name ".ddev" | sort)
 
 for ddev_dir in "${DDEV_DIRS[@]}"; do
@@ -80,19 +76,26 @@ for ddev_dir in "${DDEV_DIRS[@]}"; do
     container_name="ddev-${ddev_name}-web"
     assigned_ip=""
 
-    # A) Buscar si hay un VirtualHost en /etc/apache2/sites-available/ que apunte a una IP 172.x.x.x para este proyecto
-    for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf "${APACHE_SITES_AVAIL}/${parent_dir_name}"*.conf; do
-        [ -f "$candidate" ] || continue
-        vhost_ip=$(grep -E "ProxyPass\s+/" "$candidate" 2>/dev/null | grep -oE '172\.[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)
-        if [ -n "$vhost_ip" ]; then
-            assigned_ip="$vhost_ip"
-            break
-        fi
-    done
+    # Marcar si estaba corriendo o si es andara
+    if printf '%s\n' "${RUNNING_WEB_CONTAINERS[@]:-}" | grep -qx "$container_name" || [ "$proj_path" = "$ANDARA_DIR" ]; then
+        PROJ_SHOULD_START["$proj_path"]=1
+    fi
 
-    # B) Si el contenedor está corriendo actualmente, conservar su IP actual en ddev_default
-    if [ -z "$assigned_ip" ] && docker ps --format '{{.Names}}' | grep -qx "$container_name"; then
+    # A) Si el contenedor está corriendo actualmente, conservar su IP actual en ddev_default
+    if docker ps --format '{{.Names}}' | grep -qx "$container_name"; then
         assigned_ip=$(docker inspect -f '{{with index .NetworkSettings.Networks "ddev_default"}}{{.IPAddress}}{{end}}' "$container_name" 2>/dev/null || true)
+    fi
+
+    # B) Buscar si hay un VirtualHost en /etc/apache2/sites-available/ que apunte a una IP 172.x.x.x para este proyecto
+    if [ -z "$assigned_ip" ]; then
+        for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf "${APACHE_SITES_AVAIL}/${parent_dir_name}"*.conf; do
+            [ -f "$candidate" ] || continue
+            vhost_ip=$(grep -E "ProxyPass\s+/" "$candidate" 2>/dev/null | grep -oE '172\.[0-9]+\.[0-9]+\.[0-9]+' | head -n1 || true)
+            if [ -n "$vhost_ip" ]; then
+                assigned_ip="$vhost_ip"
+                break
+            fi
+        done
     fi
 
     # C) Revisar si ya tiene docker-compose.static-ip.yaml con el prefijo correcto
@@ -103,7 +106,7 @@ for ddev_dir in "${DDEV_DIRS[@]}"; do
         fi
     fi
 
-    # D) Si es andara/andarasalon, usar .20 por defecto (si está libre)
+    # D) Si es andara, usar .20 por defecto (si está libre)
     if [ -z "$assigned_ip" ] && [ "$ddev_name" = "andara" ]; then
         if ! printf '%s\n' "${PROJ_IPS[@]:-}" | grep -qx "${SUBNET_PREFIX}.20"; then
             assigned_ip="${SUBNET_PREFIX}.20"
@@ -131,7 +134,7 @@ services:
 EOF
     chown developer:developer "$proj_path/.ddev/docker-compose.static-ip.yaml"
 
-    # Si existe un VirtualHost para este proyecto con una IP 172.x.x.x distinta, actualizarla a su IP fija
+    # Si existe un VirtualHost para este proyecto con una IP 172.x.x.x distinta, sincronizarla a su IP fija
     for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf "${APACHE_SITES_AVAIL}/${parent_dir_name}"*.conf; do
         [ -f "$candidate" ] || continue
         if grep -qE 'http://172\.[0-9]+\.[0-9]+\.[0-9]+' "$candidate"; then
@@ -141,30 +144,25 @@ EOF
     done
 done
 
-echo "=== [4/6] Verificando que ddev_default permita asignación estática de IPs ==="
-if ! docker run --rm --network ddev_default --ip "${SUBNET_PREFIX}.250" alpine:latest true >/dev/null 2>&1; then
-    echo "Recreando red ddev_default con --subnet=${SUBNET} explícito para permitir IPs fijas..."
+echo "=== [4/6] Asegurando soporte IPAM de usuario en ddev_default ==="
+ANY_IMAGE=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep -v '<none>' | head -n1 || echo "busybox:latest")
+if ! docker run --rm --network ddev_default --ip "${SUBNET_PREFIX}.250" "$ANY_IMAGE" true >/dev/null 2>&1; then
+    echo " -> Recreando red ddev_default con --subnet=${SUBNET} explícito para permitir IPs fijas..."
     su - developer -c "ddev poweroff" || true
     docker network rm ddev_default >/dev/null 2>&1 || true
     docker network create --driver bridge --subnet="${SUBNET}" --gateway="${GATEWAY}" --label com.ddev.platform=ddev ddev_default
 fi
 
-echo "=== [5/6] Levantando todos los entornos DDEV con sus IPs fijas ==="
+echo "=== [5/6] Levantando proyectos DDEV activos + Andara con sus IPs fijas ==="
 ANDARA_IP="${PROJ_IPS[$ANDARA_DIR]:-${SUBNET_PREFIX}.20}"
-mkdir -p "$ANDARA_DIR/.ddev"
-cat > "$ANDARA_DIR/.ddev/docker-compose.static-ip.yaml" <<EOF
-services:
-  web:
-    networks:
-      ddev_default:
-        ipv4_address: ${ANDARA_IP}
-EOF
-chown -R developer:developer "$ANDARA_DIR/.ddev"
-
-for proj_path in "${!PROJ_IPS[@]}"; do
-    echo "Arrancando DDEV en $proj_path (IP fija: ${PROJ_IPS[$proj_path]})..."
-    su - developer -c "cd '$proj_path' && ddev start"
+for proj_path in "${!PROJ_SHOULD_START[@]}"; do
+    echo " -> Arrancando DDEV en $proj_path (IP fija: ${PROJ_IPS[$proj_path]})..."
+    su - developer -c "cd '$proj_path' && ddev start" || echo "    [Aviso] Revisa $proj_path manualmente si requiere configuración extra."
 done
+
+# Verificar IP real y puerto de ddev-andara-web
+ACTUAL_ANDARA_IP=$(docker inspect -f '{{with index .NetworkSettings.Networks "ddev_default"}}{{.IPAddress}}{{end}}' ddev-andara-web 2>/dev/null || echo "$ANDARA_IP")
+echo " -> Contenedor ddev-andara-web activo en IP fija: ${ACTUAL_ANDARA_IP} y puerto 127.0.0.1:8084"
 
 echo "=== [6/6] Creando y habilitando VirtualHost Apache para andarasoft.com ==="
 cat > "${APACHE_SITES_AVAIL}/andarasoft.com.conf" <<EOF
@@ -177,15 +175,14 @@ cat > "${APACHE_SITES_AVAIL}/andarasoft.com.conf" <<EOF
     RequestHeader set X-Forwarded-Proto "http"
     RequestHeader set X-Forwarded-Port "80"
 
-    ProxyPass / http://${ANDARA_IP}:80/
-    ProxyPassReverse / http://${ANDARA_IP}:80/
+    ProxyPass / http://${ACTUAL_ANDARA_IP}:80/
+    ProxyPassReverse / http://${ACTUAL_ANDARA_IP}:80/
 
     ErrorLog \${APACHE_LOG_DIR}/andarasoft.com-error.log
     CustomLog \${APACHE_LOG_DIR}/andarasoft.com-access.log combined
 </VirtualHost>
 EOF
 
-# Comprobar si existe certificado SSL en Let's Encrypt o en 000-default-le-ssl.conf
 SSL_CERT=""
 SSL_KEY=""
 if [ -f "/etc/letsencrypt/live/andarasoft.com/fullchain.pem" ]; then
@@ -208,8 +205,8 @@ if [ -n "$SSL_CERT" ] && [ -f "$SSL_CERT" ]; then
     RequestHeader set X-Forwarded-Proto "https"
     RequestHeader set X-Forwarded-Port "443"
 
-    ProxyPass / http://${ANDARA_IP}:80/
-    ProxyPassReverse / http://${ANDARA_IP}:80/
+    ProxyPass / http://${ACTUAL_ANDARA_IP}:80/
+    ProxyPassReverse / http://${ACTUAL_ANDARA_IP}:80/
 
     ErrorLog \${APACHE_LOG_DIR}/andarasoft.com-ssl-error.log
     CustomLog \${APACHE_LOG_DIR}/andarasoft.com-ssl-access.log combined
