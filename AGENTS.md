@@ -7,12 +7,18 @@ Este documento recoge la configuración del entorno, arquitectura, accesos de pr
 ## 📌 Datos de Entornos
 
 ### 🚀 Entorno de Producción
-- **Dominio Web:** `https://andarasoft.com`
+- **Dominio Web:** `https://andarasoft.com` (`www.andarasoft.com`)
 - **Dirección IP:** `75.119.136.151`
 - **Usuario SSH:** `root`
 - **Comando de Acceso SSH:** `ssh root@75.119.136.151`
 - **Ruta del Proyecto en Producción:** `/home/developer/Projects/andarasalon`
-- **Servidor Web en Producción:** `Apache/2.4.58 (Ubuntu)` (con `mod_rewrite` habilitado mediante `.htaccess`)
+- **Arquitectura en Producción (Proxy Inverso Apache + DDEV):**
+  - **Proxy Inverso Host:** `Apache/2.4.58 (Ubuntu)` (`/etc/apache2/sites-available/andarasoft.com.conf` y `andarasoft.com-le-ssl.conf`)
+  - **Contenedor Web DDEV:** `ddev-andara-web`
+  - **Puerto Host Fijo (`host_webserver_port`):** `127.0.0.1:8084`
+  - **IP Interna Fija Docker (`ddev_default`):** `172.18.0.20` (definida en [`.ddev/docker-compose.static-ip.yaml`](file:///home/antigravity/staging-environment/andara/.ddev/docker-compose.static-ip.yaml))
+  - **Puertos Router DDEV:** `33002` (HTTP) / `33003` (HTTPS)
+  - **Script de aprovisionamiento y fijación de IPs de todos los proyectos:** [`scripts/setup_production_ddev_and_vhosts.sh`](file:///home/antigravity/staging-environment/andara/scripts/setup_production_ddev_and_vhosts.sh)
 - **Plataforma SaaS Vinculada (`SUX_SALON`):** `https://andarasalon.com` (`161.97.107.80` - Nginx / Laravel)
   - Registro de negocios: `https://andarasalon.com/registrar-negocio`
   - Inicio de sesión: `https://andarasalon.com/login`
@@ -20,11 +26,13 @@ Este documento recoge la configuración del entorno, arquitectura, accesos de pr
 ### 💻 Entorno Local (Desarrollo) y Cloud Agent (`☁️`)
 - **Ruta en Agente Cloud (`☁️`):** `/home/antigravity/staging-environment/andara`
 - **Ruta Local en WSL / Escritorio:** `/home/developer/Projects/andara` (o `/home/bonilla/Projects/andara`)
-- **Virtualización Local:** DDEV (`.ddev/config.yaml`)
+- **Virtualización Local:** DDEV ([`.ddev/config.yaml`](file:///home/antigravity/staging-environment/andara/.ddev/config.yaml))
   - **Nombre del proyecto:** `andara`
   - **URL Local:** `https://andara.ddev.site`
   - **PHP:** `8.3` (`webserver_type: apache-fpm`)
   - **Base de datos configurada en DDEV:** `mariadb:10.11`
+  - **Puerto Web Host Fijo:** `8084` (`host_webserver_port: "8084"`)
+  - **IP Estática en `ddev_default`:** `172.18.0.20` ([`.ddev/docker-compose.static-ip.yaml`](file:///home/antigravity/staging-environment/andara/.ddev/docker-compose.static-ip.yaml))
   - **Gestor de dependencias:** Composer v2 (`phpmailer/phpmailer: ^6.10`)
 
 ---
