@@ -10,8 +10,6 @@ additional_hostnames: []
 additional_fqdns:
     - andarasoft.com
     - www.andarasoft.com
-    - andarasoft.es
-    - www.andarasoft.es
 database:
     type: mariadb
     version: "10.11"

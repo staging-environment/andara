@@ -111,9 +111,17 @@ EOF
             -keyout "$key_file" \
             -out "$crt_file" \
             -subj "/CN=${ddev_name}.ddev.site" >/dev/null 2>&1
-        chown -R developer:developer "$proj_path/.ddev/traefik"
         echo "    (Generado certificado TLS interno para Traefik: ${ddev_name}.crt)"
     fi
+    chmod 644 "$crt_file" "$key_file" 2>/dev/null || true
+    chown -R developer:developer "$proj_path/.ddev/traefik"
+
+    # Registrar FQDNs en /etc/hosts como root para que ddev nunca pida sudo a developer
+    for fqdn in $(awk '/^additional_fqdns:/{flag=1;next}/^[a-zA-Z]/{flag=0}flag && $1=="-"{print $2}' "$proj_path/.ddev/config.yaml"); do
+        if ! grep -qw "$fqdn" /etc/hosts; then
+            /usr/bin/ddev-hostname "$fqdn" 127.0.0.1 >/dev/null 2>&1 || echo "127.0.0.1 $fqdn" >> /etc/hosts
+        fi
+    done
 
     # Si algún VirtualHost en Apache usa IP directa 172.x.x.x para este proyecto, sincronizarla
     for candidate in "${APACHE_SITES_AVAIL}/${ddev_name}"*.conf "${APACHE_SITES_AVAIL}/${proj_dir_name}"*.conf; do
