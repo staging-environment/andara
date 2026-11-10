@@ -3,3 +3,7 @@ services:
     networks:
       ddev_default:
         ipv4_address: 172.18.0.20
+  db:
+    networks:
+      ddev_default:
+        ipv4_address: 172.18.0.30

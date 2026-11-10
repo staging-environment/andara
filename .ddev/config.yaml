@@ -3,13 +3,15 @@ type: php
 docroot: ""
 php_version: "8.3"
 webserver_type: apache-fpm
-router_http_port: "33002"
-router_https_port: "33003"
+router_http_port: "33006"
+router_https_port: "33007"
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns:
     - andarasoft.com
     - www.andarasoft.com
+    - andarasoft.es
+    - www.andarasoft.es
 database:
     type: mariadb
     version: "10.11"
