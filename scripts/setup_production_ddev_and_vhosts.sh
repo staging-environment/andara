@@ -16,17 +16,34 @@
 set -euo pipefail
 
 PROJECTS_DIR="/home/developer/Projects"
-if [ -d "/home/developer/Projects/andarasalon/public_html/.git" ]; then
-    ANDARA_DIR="/home/developer/Projects/andarasalon/public_html"
-else
-    ANDARA_DIR="/home/developer/Projects/andarasalon"
-fi
 APACHE_SITES_AVAIL="/etc/apache2/sites-available"
 
-echo "=== [0/6] Configurando safe.directory en Git y permisos de developer ==="
+echo "=== [0/6] Configurando safe.directory en Git y detectando ruta de Andara ==="
 git config --global --add safe.directory '*' || true
 su - developer -c "git config --global --add safe.directory '*'" || true
+
+# Detectar dónde reside el código de andara (andarasoft.com)
+if [ -f "/home/developer/Projects/andarasalon/public_html/porque-andara.php" ]; then
+    ANDARA_DIR="/home/developer/Projects/andarasalon/public_html"
+elif [ -f "/home/developer/Projects/andarasalon/porque-andara.php" ]; then
+    ANDARA_DIR="/home/developer/Projects/andarasalon"
+elif [ -f "/home/developer/Projects/andara/porque-andara.php" ]; then
+    ANDARA_DIR="/home/developer/Projects/andara"
+else
+    FOUND_FILE=$(find /home/developer/Projects /var/www -maxdepth 4 -name "porque-andara.php" 2>/dev/null | head -n1 || true)
+    if [ -n "$FOUND_FILE" ]; then
+        ANDARA_DIR=$(dirname "$FOUND_FILE")
+    else
+        ANDARA_DIR="/home/developer/Projects/andara"
+        su - developer -c "git clone https://github.com/staging-environment/andara.git '$ANDARA_DIR'"
+    fi
+fi
+
+echo "Ruta de Andara detectada: ${ANDARA_DIR}"
 chown -R developer:developer "$ANDARA_DIR"
+if [ -d "$ANDARA_DIR/.git" ]; then
+    su - developer -c "cd '$ANDARA_DIR' && git pull origin main" || true
+fi
 
 echo "=== [1/6] Habilitando módulos de Proxy Inverso y SSL en Apache ==="
 a2enmod proxy proxy_http headers rewrite ssl >/dev/null 2>&1 || true
