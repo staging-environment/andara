@@ -197,6 +197,13 @@ a2ensite andarasoft.com.conf >/dev/null 2>&1 || true
 apache2ctl configtest
 systemctl reload apache2
 
+echo "=== [Extra] Configurando auto-despliegue continuo (/etc/cron.d/andara-autodeploy) ==="
+cat > /etc/cron.d/andara-autodeploy <<'EOF'
+# Auto-sync de Andara desde GitHub (origin/main) cada minuto
+* * * * * developer cd /home/developer/Projects/andarasalon && git fetch origin main >/dev/null 2>&1 && [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ] && git pull origin main >/dev/null 2>&1
+EOF
+chmod 644 /etc/cron.d/andara-autodeploy
+
 echo ""
 echo "=== ¡VirtualHost creado y activado! Archivos en /etc/apache2/sites-available: ==="
 ls -lah "${APACHE_SITES_AVAIL}"/*andara*
