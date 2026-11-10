@@ -21,8 +21,15 @@
    git commit -m "feat/fix: descripción del cambio"
    git push origin main
    ```
-2. Desplegar en el servidor de producción (`root@75.119.136.151`) en `/home/developer/Projects/andarasalon/public_html`:
+2. Desplegar en el servidor de producción (`root@75.119.136.151`):
    ```bash
-   ssh root@75.119.136.151 "cd /home/developer/Projects/andarasalon/public_html && git pull origin main"
+   ssh root@75.119.136.151 "cd /home/developer/Projects/andara && git pull origin main"
    ```
-   *(Disponible vía SSH directo desde el entorno local; desde el agente en la nube `☁️`, el sandbox restringe conexiones salientes al puerto 22 SSH pero permite push a GitHub y verificación HTTP/HTTPS contra `https://andarasoft.com`).*
+
+## 🔄 Continuación Inmediata al Abrir en Local (WSL)
+Si el usuario indica continuar con la configuración en producción:
+1. Ejecutar por SSH en `root@75.119.136.151`:
+   `ssh root@75.119.136.151 "curl -fsSL https://raw.githubusercontent.com/staging-environment/andara/main/scripts/setup_production_ddev_and_vhosts.sh | bash"`
+2. Verificar en `root@75.119.136.151`:
+   - Que todos los proyectos DDEV en `/home/developer/Projects/*` tengan su IP interna fija en `.ddev/docker-compose.static-ip.yaml` sincronizada con `/etc/apache2/sites-available/*.conf`.
+   - Que el contenedor `ddev-andara-web` esté levantado y el VirtualHost `/etc/apache2/sites-available/andarasoft.com.conf` (y SSL) esté habilitado y sirviendo `https://andarasoft.com`.

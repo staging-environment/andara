@@ -77,9 +77,23 @@ Cada vez que se realice y verifique un cambio en el repositorio:
    git push origin main
    ```
 2. **Despliegue en el Servidor de Producción (`75.119.136.151`):**
-   - Ruta en producción: `/home/developer/Projects/andarasalon/public_html`
-   - Comando de despliegue por SSH:
+   - Ruta en producción de `andara` (`andarasoft.com`): `/home/developer/Projects/andara` (o donde resida `porque-andara.php`; nota: `/home/developer/Projects/andarasalon/public_html` contiene la app Laravel de `andarasalon.com`).
+   - Comando de despliegue por SSH desde el entorno local:
      ```bash
-     ssh root@75.119.136.151 "cd /home/developer/Projects/andarasalon/public_html && git pull origin main"
+     ssh root@75.119.136.151 "cd /home/developer/Projects/andara && git pull origin main"
      ```
-   - *Nota sobre el entorno de ejecución:* Desde el entorno **Local / Escritorio (WSL)** se dispone de conexión SSH directa con claves locales hacia `root@75.119.136.151`. Desde el **Agente Cloud (`☁️`)**, el proxy del sandbox (`agy-plugin-proxy`) solo permite tráfico HTTP/HTTPS saliente y bloquea conexiones TCP crudas al puerto `22` (`SSH`), pero sí permite verificar el estado HTTP/HTTPS público de `https://andarasoft.com` (`75.119.136.151`) y hacer `git push origin main`.
+
+---
+
+## 🔄 Estado Actual e Hilo de Conversación (Continuación en Local)
+
+Al abrir este proyecto desde el **Agente Local (WSL / Escritorio)** y pedir continuar:
+1. **Contexto de lo ya preparado en el repositorio (`origin/main`):**
+   - Se ha configurado [`.ddev/config.yaml`](file:///home/antigravity/staging-environment/andara/.ddev/config.yaml) con `router_http_port: "33002"`, `router_https_port: "33003"`, `host_webserver_port: "8084"`, `additional_fqdns: [andarasoft.com, www.andarasoft.com]` y `disable_settings_management: true`.
+   - Se ha creado [`.ddev/docker-compose.static-ip.yaml`](file:///home/antigravity/staging-environment/andara/.ddev/docker-compose.static-ip.yaml) fijando la IP interna `172.18.0.20` en la red `ddev_default`.
+   - Se ha creado el script automatizado [`scripts/setup_production_ddev_and_vhosts.sh`](file:///home/antigravity/staging-environment/andara/scripts/setup_production_ddev_and_vhosts.sh).
+2. **Acción inmediata a ejecutar por SSH desde Local (`ssh root@75.119.136.151`):**
+   - Conectar por SSH a `root@75.119.136.151` (`vmi2545399`).
+   - Verificar dónde están los proyectos en `/home/developer/Projects/` (`barriosdesevilla.es`, `goinvesting.es`, `pinomontano.es`, `sevilla-este.es`, `tukigocloud`, `andarasalon`, `andara`).
+   - Asegurar que **todos los proyectos DDEV** en `/home/developer/Projects/*` tengan su IP interna fijada a fuego en `.ddev/docker-compose.static-ip.yaml` (en la red `ddev_default`) coincidiendo con las IPs de `/etc/apache2/sites-available/*.conf`, para que al reiniciar Docker nunca cambien las IPs ni fallen las redirecciones del proxy inverso Apache.
+   - Clonar/actualizar `https://github.com/staging-environment/andara.git` en producción, levantar su entorno DDEV (`ddev start`) y crear/activar el VirtualHost de Apache `/etc/apache2/sites-available/andarasoft.com.conf` (y `andarasoft.com-le-ssl.conf`) apuntando al contenedor DDEV de Andara.
