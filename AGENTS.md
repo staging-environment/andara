@@ -11,6 +11,7 @@ Este documento recoge la configuración del entorno, arquitectura, accesos de pr
 - **Dirección IP:** `75.119.136.151`
 - **Usuario SSH:** `root`
 - **Comando de Acceso SSH:** `ssh root@75.119.136.151`
+- **Ruta del Proyecto en Producción:** `/home/developer/Projects/andarasalon`
 - **Servidor Web en Producción:** `Apache/2.4.58 (Ubuntu)` (con `mod_rewrite` habilitado mediante `.htaccess`)
 - **Plataforma SaaS Vinculada (`SUX_SALON`):** `https://andarasalon.com` (`161.97.107.80` - Nginx / Laravel)
   - Registro de negocios: `https://andarasalon.com/registrar-negocio`
@@ -68,9 +69,9 @@ Cada vez que se realice y verifique un cambio en el repositorio:
    git push origin main
    ```
 2. **Despliegue en el Servidor de Producción (`75.119.136.151`):**
-   - Acceso por SSH como `root`:
+   - Ruta en producción: `/home/developer/Projects/andarasalon`
+   - Comando de despliegue por SSH:
      ```bash
-     ssh root@75.119.136.151
+     ssh root@75.119.136.151 "cd /home/developer/Projects/andarasalon && git pull origin main"
      ```
-   - Actualizar el repositorio en el directorio web de producción (`git pull origin main`).
    - *Nota sobre el entorno de ejecución:* Desde el entorno **Local / Escritorio (WSL)** se dispone de conexión SSH directa con claves locales hacia `root@75.119.136.151`. Desde el **Agente Cloud (`☁️`)**, el proxy del sandbox (`agy-plugin-proxy`) solo permite tráfico HTTP/HTTPS saliente y bloquea conexiones TCP crudas al puerto `22` (`SSH`), pero sí permite verificar el estado HTTP/HTTPS público de `https://andarasoft.com` (`75.119.136.151`) y hacer `git push origin main`.

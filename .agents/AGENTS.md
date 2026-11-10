@@ -5,6 +5,7 @@
 - **Dominio de Producción:** `https://andarasoft.com`
 - **Servidor de Producción (IP):** `75.119.136.151`
 - **Usuario SSH:** `root` (`ssh root@75.119.136.151`)
+- **Ruta en Producción:** `/home/developer/Projects/andarasalon`
 - **Servidor Web:** `Apache/2.4.58 (Ubuntu)`
 - **Plataforma SaaS Vinculada (`SUX_SALON`):** `https://andarasalon.com` (`161.97.107.80`)
 
@@ -20,4 +21,8 @@
    git commit -m "feat/fix: descripción del cambio"
    git push origin main
    ```
-2. Desplegar en el servidor de producción (`root@75.119.136.151`) ejecutando `git pull origin main` en el directorio del proyecto en el servidor (disponible vía SSH directo desde el entorno local; desde el agente en la nube `☁️`, el sandbox restringe conexiones salientes al puerto 22 SSH pero permite push a GitHub y verificación HTTP/HTTPS contra `https://andarasoft.com`).
+2. Desplegar en el servidor de producción (`root@75.119.136.151`) en `/home/developer/Projects/andarasalon`:
+   ```bash
+   ssh root@75.119.136.151 "cd /home/developer/Projects/andarasalon && git pull origin main"
+   ```
+   *(Disponible vía SSH directo desde el entorno local; desde el agente en la nube `☁️`, el sandbox restringe conexiones salientes al puerto 22 SSH pero permite push a GitHub y verificación HTTP/HTTPS contra `https://andarasoft.com`).*
